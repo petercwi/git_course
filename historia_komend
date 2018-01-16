@@ -1,0 +1,97 @@
+ 1793  mkdir git_train #stworzenie katalogu
+ 1794  ls
+ 1795  cd git_train
+ 1796  ls
+ 1797  git init #stworzenie nowego repozytorium w pliku
+ 1798  ls -a
+ 1799  ls -al
+ 1800  git status #sprawdzenie statusu repozytorium
+ 1801  git add test1 #zrobienie snapshota (zdjęcie aparatem cyfrowym)
+ 1802  git status
+ 1803  git commit -m "Initial version of test1 file"
+ 1804  #sprawdzenie statusu commitów
+ 1805  git log
+ 1806  #podmienilismy zawartość pliku test1
+ 1807  git status
+ 1808  git add . #ponownie cykamy zdjęcie
+ 1809  git status
+ 1810  git commit -m "Rewrite hello with capital letter"
+ 1811  git log
+ 1812  git checkout 7999aa7348313c894d00a2ec27bff01c3d1419fa #przejście do poprzedniego commita
+ 1813  git branch new-test-file #stworzenie nowego brancha
+ 1814  git branch #sprawdzenie listy branchy
+ 1815  git checkout new-test-file #przejscie do nowego braancha
+ 1816  git branch
+ 1817  gitk #troche wizualne narzedzie do przeglądania stanu repo
+ 1818  git branch
+ 1819  git checkout master # przejscie do innego brncha (do mastera)
+ 1820  git checkout new-test-file
+ 1821  vim test2
+ 1822  git status
+ 1823  git add test2 # zrobienie zdjecia z plikiem test2
+ 1824  git status
+ 1825  git commit -m "dodanie nowego pliku do repo"
+ 1826  git checkout master
+ 1827  #Bedziemy laczyc dwa branche
+ 1828  # Najpierw testy:
+ 1829  vim test2
+ 1830  git add .
+ 1831  git ci -m "New test2 file"
+ 1832  # ci skrót krystiana do commit
+ 1833  git checkout new-test-file
+ 1834  git log
+ 1835  # zlaczymy mastera do naszego brancha i przetestujemy powsale repo
+ 1836  git merge master # domyśnie przyłączamy do obecnego (sprawdzamy przez git branch)
+ 1837  # są konflikty. 
+ 1838  git status # sprawdzenie gdzie są konflikty 
+ 1839  vim test2
+ 1840  git status
+ 1841  #  konflikty rozwiązane, musimy znowu zrobić zdjecie
+ 1842  git add . # wszystko dodajemy
+ 1843  git status # sprawdzamy status
+ 1844  git commit -m "wywołanie zdjecia :)"
+ 1845  # Pobraliśmy mastera, jeśli jesteśm ostatni to super, ale jak nie to mmussimy wykonac robotę jeszcze raz
+ 1846  git checkout
+ 1847  git checkout master
+ 1848  git merge new-test-file #mergujemy z masterem
+ 1849  # fast-forward - metoda mergowania bez konfliktow
+ 1850  #  (sam sie domyslil jak polaczyc)
+ 1851  gitk
+ 1852  git branch -d new-test-file # wwywalenie zmergowanego brancha
+ 1853* cd ....
+ 1854* ls
+ 1855* cd Projects
+ 1856* cd Appsilon/shiny.semantic
+ 1857* git br
+ 1858* cd ..
+ 1859* cd kesko/onninen-smart-pricing/n
+ 1860* cd kesko/onninen-smart-pricing/
+ 1861* git br
+ 1862  gitk
+ 1863  git branch
+ 1864  git log
+
+
+ 1889  # DOkonujemy review kodu
+ 1890  # SPrawdzam na githubie jaki branch chcemy wlaczyc
+ 1891  # chce przejsc na tego brancha
+ 1892  git checkout nowy-skrypt2
+ 1893  #ups, moje lokalne repo nei widzi tego nowego branca
+ 1894  # musze wczytac statnie zmainy
+ 1895  git fetch
+ 1896  git checkout nowy-skrypt2
+ 1897  # druga (bardziej popularna metoda) to git pull
+ 1898  # git pull aktualizuje zmiany oraz wmergowuje je do mojego lokalnego brancha
+ 1899  vim skrypt2.R
+ 1900  # Po odniesieniu się do review przez Piotrka i zushowaniu zmian do remote ja u siebie loaklnie ponownie sprawdzam zmainy
+ 1901  git pull
+ 1902  git status
+ 1903  git diff
+ 1904  # poniewaz w ubuntu wszystkie pliki maja pusta linie wiec wprowwadzila mi sie ona automatycznie
+ 1905  # am teraz konflikt, bo zarówno ja jak i Piotrek zmodyfikowalismy ten plik
+ 1906  #ale ja nie chce moich zmian wiec cofne sie do ostatniego commita
+ 1907  git reset --hard
+ 1908  # trzeba uwazac z ta komenda
+ 1909  git pull
+ 1910  cat skrypt2.R
+
