@@ -1,1 +1,1 @@
-"ala ma kota"
+print("ala ma kota")
